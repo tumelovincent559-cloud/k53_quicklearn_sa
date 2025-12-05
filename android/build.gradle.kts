@@ -1,5 +1,5 @@
 buildscript {
-    extra["kotlin_version"] = "1.9.23"
+    val kotlinVersion = "1.9.23"
     
     repositories {
         google()
@@ -8,7 +8,7 @@ buildscript {
 
     dependencies {
         classpath("com.android.tools.build:gradle:8.2.2")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${extra["kotlin_version"]}")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
     }
 }
 
