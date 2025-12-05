@@ -1,13 +1,14 @@
 buildscript {
-    ext.kotlin_version = '1.9.23'
+    extra["kotlin_version"] = "1.9.23"
+    
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.2.2'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath("com.android.tools.build:gradle:8.2.2")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${extra["kotlin_version"]}")
     }
 }
 
@@ -18,6 +19,6 @@ allprojects {
     }
 }
 
-tasks.register("clean", Delete) {
-    delete rootProject.buildDir
+tasks.register<Delete>("clean") {
+    delete(rootProject.buildDir)
 }
