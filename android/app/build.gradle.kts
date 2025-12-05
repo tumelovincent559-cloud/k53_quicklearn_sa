@@ -33,9 +33,10 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
             isShrinkResources = false
+            // Use debug signing for GitHub Actions builds
             signingConfig = signingConfigs.getByName("debug")
         }
     }
