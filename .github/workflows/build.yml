@@ -1,52 +1,40 @@
-name: Build and Release APK
+name: Flutter Build APK
 
 on:
   push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
-  contents: write  # REQUIRED for release creation
+  contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Setup Java
-      uses: actions/setup-java@v4
-      with:
-        distribution: 'zulu'
-        java-version: '17'
-    
-    - name: Setup Flutter
-      uses: subosito/flutter-action@v2
-      with:
-        flutter-version: '3.24.0'
-        channel: 'stable'
-    
-    - name: Get dependencies
-      run: flutter pub get
-    
-    - name: Build APK
-      run: flutter build apk --release
-    
-    - name: Upload APK
-      uses: actions/upload-artifact@v4
-      with:
-        name: release-apk
-        path: build/app/outputs/flutter-apk/app-release.apk
-    
-    - name: Create Release
-      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-      uses: softprops/action-gh-release@v2
-      with:
-        tag_name: v${{ github.run_number }}
-        name: Release v${{ github.run_number }}
-        files: build/app/outputs/flutter-apk/app-release.apk
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # 1) Checkout project
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2) Install Flutter 3.38.4 (required for Dart 3.6.0)
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.38.4"
+          channel: stable
+
+      # 3) Install pub dependencies
+      - name: Install dependencies
+        run: flutter pub get
+
+      # 4) Build APK (no icon tree shaking)
+      - name: Build APK
+        run: flutter build apk --release --no-tree-shake-icons
+
+      # 5) Upload built APK artifact
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release
+          path: build/app/outputs/flutter-apk/app-release.apk
