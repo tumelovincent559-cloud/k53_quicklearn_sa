@@ -25,7 +25,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
   /// List of favorite recipes with full data
   List<Map<String, dynamic>> _favoriteRecipes = [];
 
-  /// Loading state for pull-to-refresh
+  // Remove this
   bool _isRefreshing = false;
 
   /// Search query for filtering favorites
