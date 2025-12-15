@@ -1,9 +1,29 @@
-include ':app'
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
 
-def flutterSdkPath = null
-Properties properties = new Properties()
-file("local.properties").withInputStream { properties.load(it) }
-flutterSdkPath = properties.getProperty("flutter.sdk")
-assert flutterSdkPath != null, "flutter.sdk not set in local.properties"
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.6.0'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0'
+    }
+}
 
-includeBuild("$flutterSdkPath/packages/flutter_tools/gradle")
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = '../build'
+
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+    project.evaluationDependsOn(':app')
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
