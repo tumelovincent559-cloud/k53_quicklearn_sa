@@ -1,57 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-/// Custom Bottom Navigation Bar for K53 Learner application
-/// Implements bottom-heavy architecture for thumb-friendly navigation
-///
-/// Features:
-/// - Hub-and-spoke navigation model
-/// - South African color scheme
-/// - Clear visual hierarchy
-/// - Touch-optimized targets (48dp minimum)
-/// - Consistent with educational minimalism design
-enum CustomBottomBarVariant {
-  /// Standard bottom bar with all navigation items
-  standard,
-
-  /// Compact bottom bar with icons only
-  compact,
-
-  /// Bottom bar with labels always visible
-  labeled,
+/// Navigation item configuration for bottom navigation bar
+enum CustomBottomBarItem {
+  recipes,
+  favorites,
 }
 
+/// Custom bottom navigation bar widget optimized for cooking context
+/// Implements cooking-optimized 60dp height with large touch targets
+/// Positioned in natural thumb zone for one-handed operation
 class CustomBottomBar extends StatelessWidget {
-  /// The currently selected index
-  final int currentIndex;
+  /// Current selected navigation item
+  final CustomBottomBarItem currentItem;
 
-  /// Callback when a navigation item is tapped
-  final ValueChanged<int> onTap;
+  /// Callback when navigation item is tapped
+  final Function(CustomBottomBarItem) onItemTapped;
 
-  /// The variant of the bottom bar
-  final CustomBottomBarVariant variant;
-
-  /// Custom background color (overrides theme)
-  final Color? backgroundColor;
-
-  /// Custom selected item color (overrides theme)
-  final Color? selectedItemColor;
-
-  /// Custom unselected item color (overrides theme)
-  final Color? unselectedItemColor;
-
-  /// Elevation of the bottom bar
-  final double elevation;
+  /// Optional badge count for favorites (shows number of saved recipes)
+  final int? favoritesBadgeCount;
 
   const CustomBottomBar({
     super.key,
-    required this.currentIndex,
-    required this.onTap,
-    this.variant = CustomBottomBarVariant.standard,
-    this.backgroundColor,
-    this.selectedItemColor,
-    this.unselectedItemColor,
-    this.elevation = 8.0,
+    required this.currentItem,
+    required this.onItemTapped,
+    this.favoritesBadgeCount,
   });
 
   @override
@@ -59,164 +31,149 @@ class CustomBottomBar extends StatelessWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    // Determine colors
-    final bgColor = backgroundColor ?? colorScheme.surface;
-    final selectedColor = selectedItemColor ?? colorScheme.primary;
-    final unselectedColor =
-        unselectedItemColor ??
-        (theme.brightness == Brightness.light
-            ? const Color(0xFF757575)
-            : const Color(0xFFB0B0B0));
-
     return Container(
+      height: 60,
       decoration: BoxDecoration(
-        color: bgColor,
+        color: theme.bottomNavigationBarTheme.backgroundColor,
         boxShadow: [
           BoxShadow(
-            color: theme.shadowColor.withValues(alpha: 0.1),
+            color: colorScheme.shadow,
             blurRadius: 8,
             offset: const Offset(0, -2),
           ),
         ],
       ),
       child: SafeArea(
-        child: BottomNavigationBar(
-          currentIndex: currentIndex,
-          onTap: (index) => _handleNavigation(context, index),
-          type: variant == CustomBottomBarVariant.compact
-              ? BottomNavigationBarType.shifting
-              : BottomNavigationBarType.fixed,
-          backgroundColor: bgColor,
-          selectedItemColor: selectedColor,
-          unselectedItemColor: unselectedColor,
-          elevation: 0, // We handle elevation with container shadow
-          selectedLabelStyle: GoogleFonts.roboto(
-            fontSize: 12,
-            fontWeight: FontWeight.w500,
-            letterSpacing: 0.5,
-          ),
-          unselectedLabelStyle: GoogleFonts.roboto(
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            letterSpacing: 0.5,
-          ),
-          showSelectedLabels: variant != CustomBottomBarVariant.compact,
-          showUnselectedLabels: variant == CustomBottomBarVariant.labeled,
-          items: _buildNavigationItems(),
+        top: false,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _buildNavItem(
+              context: context,
+              item: CustomBottomBarItem.recipes,
+              icon: Icons.restaurant_menu_rounded,
+              label: 'Recipes',
+              isSelected: currentItem == CustomBottomBarItem.recipes,
+            ),
+            _buildNavItem(
+              context: context,
+              item: CustomBottomBarItem.favorites,
+              icon: Icons.favorite_rounded,
+              label: 'Favorites',
+              isSelected: currentItem == CustomBottomBarItem.favorites,
+              badgeCount: favoritesBadgeCount,
+            ),
+          ],
         ),
       ),
     );
   }
 
-  /// Build navigation items based on Mobile Navigation Hierarchy
-  List<BottomNavigationBarItem> _buildNavigationItems() {
-    return [
-      BottomNavigationBarItem(
-        icon: const Padding(
-          padding: EdgeInsets.only(bottom: 4),
-          child: Icon(Icons.home_outlined, size: 24),
+  /// Builds individual navigation item with large touch target (minimum 48dp)
+  Widget _buildNavItem({
+    required BuildContext context,
+    required CustomBottomBarItem item,
+    required IconData icon,
+    required String label,
+    required bool isSelected,
+    int? badgeCount,
+  }) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final selectedColor =
+        theme.bottomNavigationBarTheme.selectedItemColor ?? colorScheme.primary;
+    final unselectedColor =
+        theme.bottomNavigationBarTheme.unselectedItemColor ??
+            colorScheme.onSurface.withValues(alpha: 0.6);
+
+    return Expanded(
+      child: InkWell(
+        onTap: () => onItemTapped(item),
+        splashColor: selectedColor.withValues(alpha: 0.1),
+        highlightColor: selectedColor.withValues(alpha: 0.05),
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Icon with badge support
+              Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  AnimatedContainer(
+                    duration: const Duration(milliseconds: 200),
+                    curve: Curves.easeOut,
+                    child: Icon(
+                      icon,
+                      size: 28,
+                      color: isSelected ? selectedColor : unselectedColor,
+                    ),
+                  ),
+                  // Badge indicator for favorites count
+                  if (badgeCount != null && badgeCount > 0)
+                    Positioned(
+                      right: -8,
+                      top: -4,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 2,
+                        ),
+                        decoration: BoxDecoration(
+                          color: colorScheme.tertiary,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        constraints: const BoxConstraints(
+                          minWidth: 18,
+                          minHeight: 18,
+                        ),
+                        child: Text(
+                          badgeCount > 99 ? '99+' : badgeCount.toString(),
+                          style: theme.textTheme.labelSmall?.copyWith(
+                            color: colorScheme.onTertiary,
+                            fontSize: 10,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+              const SizedBox(height: 4),
+              // Label with animation
+              AnimatedDefaultTextStyle(
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.easeOut,
+                style: (isSelected
+                        ? theme.bottomNavigationBarTheme.selectedLabelStyle
+                        : theme
+                            .bottomNavigationBarTheme.unselectedLabelStyle) ??
+                    theme.textTheme.labelSmall!,
+                child: Text(
+                  label,
+                  style: TextStyle(
+                    color: isSelected ? selectedColor : unselectedColor,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
-        activeIcon: const Padding(
-          padding: EdgeInsets.only(bottom: 4),
-          child: Icon(Icons.home, size: 24),
-        ),
-        label: 'Home',
-        tooltip: 'Home - Main navigation hub',
       ),
-      BottomNavigationBarItem(
-        icon: const Padding(
-          padding: EdgeInsets.only(bottom: 4),
-          child: Icon(Icons.menu_book_outlined, size: 24),
-        ),
-        activeIcon: const Padding(
-          padding: EdgeInsets.only(bottom: 4),
-          child: Icon(Icons.menu_book, size: 24),
-        ),
-        label: 'Study',
-        tooltip: 'Study - Comprehensive learning materials',
-      ),
-      BottomNavigationBarItem(
-        icon: const Padding(
-          padding: EdgeInsets.only(bottom: 4),
-          child: Icon(Icons.quiz_outlined, size: 24),
-        ),
-        activeIcon: const Padding(
-          padding: EdgeInsets.only(bottom: 4),
-          child: Icon(Icons.quiz, size: 24),
-        ),
-        label: 'Quiz',
-        tooltip: 'Quiz - Interactive testing mode',
-      ),
-      BottomNavigationBarItem(
-        icon: const Padding(
-          padding: EdgeInsets.only(bottom: 4),
-          child: Icon(Icons.traffic_outlined, size: 24),
-        ),
-        activeIcon: const Padding(
-          padding: EdgeInsets.only(bottom: 4),
-          child: Icon(Icons.traffic, size: 24),
-        ),
-        label: 'Signs',
-        tooltip: 'Road Signs - Visual reference guide',
-      ),
-    ];
+    );
   }
 
-  /// Handle navigation with route mapping
-  void _handleNavigation(BuildContext context, int index) {
-    // Call the onTap callback
-    onTap(index);
-
-    // Map index to route paths
-    final routes = [
-      '/home-screen',
-      '/study-screen',
-      '/quiz-screen',
-      '/road-signs-screen',
-    ];
-
-    // Navigate to the selected route if not already there
-    if (index != currentIndex && index < routes.length) {
-      Navigator.pushReplacementNamed(context, routes[index]);
+  /// Helper method to navigate to the appropriate screen based on selected item
+  static void navigateToItem(BuildContext context, CustomBottomBarItem item) {
+    switch (item) {
+      case CustomBottomBarItem.recipes:
+        Navigator.pushReplacementNamed(context, '/main-recipe-list-screen');
+        break;
+      case CustomBottomBarItem.favorites:
+        Navigator.pushReplacementNamed(context, '/favorites-screen');
+        break;
     }
-  }
-}
-
-/// Extension to provide common bottom bar configurations
-extension CustomBottomBarPresets on CustomBottomBar {
-  /// Create a standard bottom bar
-  static CustomBottomBar standard({
-    required int currentIndex,
-    required ValueChanged<int> onTap,
-  }) {
-    return CustomBottomBar(
-      currentIndex: currentIndex,
-      onTap: onTap,
-      variant: CustomBottomBarVariant.standard,
-    );
-  }
-
-  /// Create a compact bottom bar (icons only)
-  static CustomBottomBar compact({
-    required int currentIndex,
-    required ValueChanged<int> onTap,
-  }) {
-    return CustomBottomBar(
-      currentIndex: currentIndex,
-      onTap: onTap,
-      variant: CustomBottomBarVariant.compact,
-    );
-  }
-
-  /// Create a labeled bottom bar (always show labels)
-  static CustomBottomBar labeled({
-    required int currentIndex,
-    required ValueChanged<int> onTap,
-  }) {
-    return CustomBottomBar(
-      currentIndex: currentIndex,
-      onTap: onTap,
-      variant: CustomBottomBarVariant.labeled,
-    );
   }
 }

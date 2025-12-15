@@ -79,7 +79,10 @@ class CustomImageWidget extends StatelessWidget {
   Widget _buildWidget() {
     return Padding(
       padding: margin ?? EdgeInsets.zero,
-      child: InkWell(onTap: onTap, child: _buildCircleImage()),
+      child: InkWell(
+        onTap: onTap,
+        child: _buildCircleImage(),
+      ),
     );
   }
 
@@ -99,7 +102,10 @@ class CustomImageWidget extends StatelessWidget {
   _buildImageWithBorder() {
     if (border != null) {
       return Container(
-        decoration: BoxDecoration(border: border, borderRadius: radius),
+        decoration: BoxDecoration(
+          border: border,
+          borderRadius: radius,
+        ),
         child: _buildImageView(),
       );
     } else {
@@ -121,9 +127,7 @@ class CustomImageWidget extends StatelessWidget {
               fit: fit ?? BoxFit.contain,
               colorFilter: color != null
                   ? ColorFilter.mode(
-                      color ?? Colors.transparent,
-                      BlendMode.srcIn,
-                    )
+                      color ?? Colors.transparent, BlendMode.srcIn)
                   : null,
               semanticsLabel: semanticLabel,
             ),

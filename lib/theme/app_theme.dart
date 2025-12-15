@@ -1,150 +1,190 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-/// A class that contains all theme configurations for the K53 Learner application.
-/// Implements Contemporary Educational Minimalism with South African Heritage colors.
+/// A class that contains all theme configurations for the recipe management application.
+/// Implements Contemporary Culinary Minimalism with Warm Neutral Foundation color palette.
 class AppTheme {
   AppTheme._();
 
-  // South African Heritage Color Palette
-  static const Color primaryLight = Color(0xFF0039A6); // South African blue
-  static const Color secondaryLight = Color(0xFF008037); // Success green
-  static const Color accentLight = Color(0xFFF2C12E); // Strategic yellow
-  static const Color backgroundLight = Color(0x00fafafa); // Soft off-white
-  static const Color surfaceLight = Color(0xFFFFFFFF); // Pure white cards
-  static const Color errorLight = Color(0xFFD32F2F); // Clear error red
-  static const Color textPrimaryLight = Color(0xFF212121); // High contrast
-  static const Color textSecondaryLight = Color(0xFF757575); // Supporting text
-  static const Color dividerLight = Color(0xFFE0E0E0); // Subtle separation
-  static const Color disabledLight = Color(0xFFBDBDBD); // Inactive states
+  // Color Specifications - Warm Neutral Foundation
+  // Primary: Deep forest green for main actions and headers
+  static const Color primaryLight = Color(0xFF2D5A27);
+  static const Color primaryVariantLight = Color(0xFF1F3E1C);
 
-  // Dark theme adaptations (maintaining accessibility)
-  static const Color primaryDark = Color(
-    0xFF5B8FD9,
-  ); // Lighter blue for dark mode
-  static const Color secondaryDark = Color(0xFF4CAF50); // Adjusted green
-  static const Color accentDark = Color(0xFFFDD835); // Brighter yellow
-  static const Color backgroundDark = Color(0xFF121212); // True dark
-  static const Color surfaceDark = Color(0xFF1E1E1E); // Elevated dark surface
-  static const Color errorDark = Color(
-    0xFFEF5350,
-  ); // Lighter error for contrast
-  static const Color textPrimaryDark = Color(0xFFFFFFFF); // White text
-  static const Color textSecondaryDark = Color(0xFFB0B0B0); // Muted text
-  static const Color dividerDark = Color(0xFF2C2C2C); // Dark divider
-  static const Color disabledDark = Color(0xFF616161); // Dark disabled
+  // Secondary: Warm brown for secondary buttons and accent elements
+  static const Color secondaryLight = Color(0xFF8B4513);
+  static const Color secondaryVariantLight = Color(0xFF6B3410);
 
-  // Shadow colors for elevation system (0-8dp)
-  static const Color shadowLight = Color(0x1F000000);
-  static const Color shadowDark = Color(0x3F000000);
+  // Background: Soft off-white for main backgrounds
+  static const Color backgroundLight = Color(0xFFFAFAFA);
 
-  // Text emphasis levels (Material Design standards)
-  static const Color textHighEmphasisLight = Color(0xDE000000); // 87%
-  static const Color textMediumEmphasisLight = Color(0x99000000); // 60%
-  static const Color textDisabledEmphasisLight = Color(0x61000000); // 38%
+  // Surface: Pure white for recipe cards and elevated surfaces
+  static const Color surfaceLight = Color(0xFFFFFFFF);
 
-  static const Color textHighEmphasisDark = Color(0xDEFFFFFF); // 87%
-  static const Color textMediumEmphasisDark = Color(0x99FFFFFF); // 60%
-  static const Color textDisabledEmphasisDark = Color(0x61FFFFFF); // 38%
+  // Error: Standard red for error states
+  static const Color errorLight = Color(0xFFD32F2F);
 
-  /// Light theme - Contemporary Educational Minimalism
+  // Accent: Vibrant orange for favorites and call-to-action
+  static const Color accentWarmLight = Color(0xFFFF6B35);
+
+  // Text colors
+  static const Color textPrimaryLight = Color(0xFF212121);
+  static const Color textSecondaryLight = Color(0xFF757575);
+  static const Color onPrimaryLight = Color(0xFFFFFFFF);
+  static const Color onSecondaryLight = Color(0xFFFFFFFF);
+  static const Color onBackgroundLight = Color(0xFF212121);
+  static const Color onSurfaceLight = Color(0xFF212121);
+  static const Color onErrorLight = Color(0xFFFFFFFF);
+
+  // Dark theme colors
+  static const Color primaryDark = Color(0xFF4A8B42);
+  static const Color primaryVariantDark = Color(0xFF2D5A27);
+  static const Color secondaryDark = Color(0xFFB8651F);
+  static const Color secondaryVariantDark = Color(0xFF8B4513);
+
+  // Background: Rich charcoal for dark mode
+  static const Color backgroundDark = Color(0xFF1A1A1A);
+
+  // Surface: Medium gray for cards and surfaces in dark mode
+  static const Color surfaceDark = Color(0xFF2D2D2D);
+
+  static const Color errorDark = Color(0xFFEF5350);
+  static const Color accentWarmDark = Color(0xFFFF8A5B);
+
+  static const Color textPrimaryDark = Color(0xFFFFFFFF);
+  static const Color textSecondaryDark = Color(0xFFB0B0B0);
+  static const Color onPrimaryDark = Color(0xFFFFFFFF);
+  static const Color onSecondaryDark = Color(0xFFFFFFFF);
+  static const Color onBackgroundDark = Color(0xFFFFFFFF);
+  static const Color onSurfaceDark = Color(0xFFFFFFFF);
+  static const Color onErrorDark = Color(0xFF000000);
+
+  // Card and dialog colors
+  static const Color cardLight = Color(0xFFFFFFFF);
+  static const Color cardDark = Color(0xFF2D2D2D);
+  static const Color dialogLight = Color(0xFFFFFFFF);
+  static const Color dialogDark = Color(0xFF2D2D2D);
+
+  // Shadow colors - subtle elevation
+  static const Color shadowLight = Color(0x0A000000);
+  static const Color shadowDark = Color(0x14000000);
+
+  // Divider colors - minimal border usage
+  static const Color dividerLight = Color(0x1F757575);
+  static const Color dividerDark = Color(0x1FB0B0B0);
+
+  // Text emphasis levels
+  static const Color textHighEmphasisLight = Color(0xFF212121);
+  static const Color textMediumEmphasisLight = Color(0xFF757575);
+  static const Color textDisabledLight = Color(0x61212121);
+
+  static const Color textHighEmphasisDark = Color(0xFFFFFFFF);
+  static const Color textMediumEmphasisDark = Color(0xFFB0B0B0);
+  static const Color textDisabledDark = Color(0x61FFFFFF);
+
+  /// Light theme - Contemporary Culinary Minimalism
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     useMaterial3: true,
     colorScheme: ColorScheme(
       brightness: Brightness.light,
       primary: primaryLight,
-      onPrimary: surfaceLight,
-      primaryContainer: primaryLight.withValues(alpha: 0.12),
-      onPrimaryContainer: primaryLight,
+      onPrimary: onPrimaryLight,
+      primaryContainer: primaryVariantLight,
+      onPrimaryContainer: onPrimaryLight,
       secondary: secondaryLight,
-      onSecondary: surfaceLight,
-      secondaryContainer: secondaryLight.withValues(alpha: 0.12),
-      onSecondaryContainer: secondaryLight,
-      tertiary: accentLight,
-      onTertiary: textPrimaryLight,
-      tertiaryContainer: accentLight.withValues(alpha: 0.12),
-      onTertiaryContainer: textPrimaryLight,
+      onSecondary: onSecondaryLight,
+      secondaryContainer: secondaryVariantLight,
+      onSecondaryContainer: onSecondaryLight,
+      tertiary: accentWarmLight,
+      onTertiary: onPrimaryLight,
+      tertiaryContainer: accentWarmLight,
+      onTertiaryContainer: onPrimaryLight,
       error: errorLight,
-      onError: surfaceLight,
+      onError: onErrorLight,
       surface: surfaceLight,
-      onSurface: textPrimaryLight,
+      onSurface: onSurfaceLight,
       onSurfaceVariant: textSecondaryLight,
       outline: dividerLight,
-      outlineVariant: dividerLight.withValues(alpha: 0.5),
+      outlineVariant: dividerLight,
       shadow: shadowLight,
       scrim: shadowLight,
       inverseSurface: surfaceDark,
-      onInverseSurface: textPrimaryDark,
+      onInverseSurface: onSurfaceDark,
       inversePrimary: primaryDark,
-      surfaceTint: primaryLight,
     ),
     scaffoldBackgroundColor: backgroundLight,
-    cardColor: surfaceLight,
+    cardColor: cardLight,
     dividerColor: dividerLight,
-    disabledColor: disabledLight,
 
-    // AppBar theme - Professional header with South African blue
+    // AppBar theme - clean header design
     appBarTheme: AppBarTheme(
-      backgroundColor: primaryLight,
-      foregroundColor: surfaceLight,
-      elevation: 2.0,
-      centerTitle: true,
-      titleTextStyle: GoogleFonts.roboto(
+      backgroundColor: surfaceLight,
+      foregroundColor: textPrimaryLight,
+      elevation: 0,
+      centerTitle: false,
+      titleTextStyle: GoogleFonts.inter(
         fontSize: 20,
-        fontWeight: FontWeight.w500,
-        color: surfaceLight,
+        fontWeight: FontWeight.w600,
+        color: textPrimaryLight,
         letterSpacing: 0.15,
       ),
-      iconTheme: const IconThemeData(color: surfaceLight, size: 24),
+      iconTheme: const IconThemeData(
+        color: textPrimaryLight,
+        size: 24,
+      ),
     ),
 
-    // Card theme - Elevated containers with subtle shadows
+    // Card theme - subtle elevation for recipe cards
     cardTheme: CardThemeData(
-      color: surfaceLight,
+      color: cardLight,
       elevation: 2.0,
       shadowColor: shadowLight,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.0),
+      ),
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
     ),
 
-    // Bottom navigation - Thumb-friendly positioning
+    // Bottom navigation - cooking-optimized 60dp height
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: surfaceLight,
       selectedItemColor: primaryLight,
-      unselectedItemColor: textSecondaryLight,
-      selectedLabelStyle: GoogleFonts.roboto(
+      unselectedItemColor: textMediumEmphasisLight,
+      elevation: 4.0,
+      type: BottomNavigationBarType.fixed,
+      selectedLabelStyle: GoogleFonts.inter(
         fontSize: 12,
         fontWeight: FontWeight.w500,
       ),
-      unselectedLabelStyle: GoogleFonts.roboto(
+      unselectedLabelStyle: GoogleFonts.inter(
         fontSize: 12,
         fontWeight: FontWeight.w400,
       ),
-      type: BottomNavigationBarType.fixed,
-      elevation: 8.0,
     ),
 
-    // FAB theme - Contextual actions with accent color
+    // Floating action button - theme toggle
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: accentLight,
-      foregroundColor: textPrimaryLight,
-      elevation: 4.0,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+      backgroundColor: accentWarmLight,
+      foregroundColor: onPrimaryLight,
+      elevation: 3.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16.0),
+      ),
     ),
 
-    // Button themes - Consistent touch targets (48dp minimum)
+    // Button themes
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        foregroundColor: surfaceLight,
+        foregroundColor: onPrimaryLight,
         backgroundColor: primaryLight,
-        disabledForegroundColor: textDisabledEmphasisLight,
-        disabledBackgroundColor: disabledLight,
         elevation: 2.0,
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        minimumSize: const Size(88, 48),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-        textStyle: GoogleFonts.roboto(
+        minimumSize: const Size(48, 48),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        textStyle: GoogleFonts.inter(
           fontSize: 14,
           fontWeight: FontWeight.w500,
           letterSpacing: 1.25,
@@ -155,12 +195,13 @@ class AppTheme {
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         foregroundColor: primaryLight,
-        disabledForegroundColor: textDisabledEmphasisLight,
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        minimumSize: const Size(88, 48),
+        minimumSize: const Size(48, 48),
         side: const BorderSide(color: primaryLight, width: 1),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-        textStyle: GoogleFonts.roboto(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        textStyle: GoogleFonts.inter(
           fontSize: 14,
           fontWeight: FontWeight.w500,
           letterSpacing: 1.25,
@@ -171,11 +212,12 @@ class AppTheme {
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: primaryLight,
-        disabledForegroundColor: textDisabledEmphasisLight,
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        minimumSize: const Size(88, 48),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-        textStyle: GoogleFonts.roboto(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        minimumSize: const Size(48, 48),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        textStyle: GoogleFonts.inter(
           fontSize: 14,
           fontWeight: FontWeight.w500,
           letterSpacing: 1.25,
@@ -183,21 +225,21 @@ class AppTheme {
       ),
     ),
 
-    // Text theme - Roboto for optimal readability
+    // Typography - Inter for headings, body text, and captions
     textTheme: _buildTextTheme(isLight: true),
 
-    // Input decoration - Clean borders with focused states
+    // Input decoration - large touch targets for cooking context
     inputDecorationTheme: InputDecorationTheme(
       fillColor: surfaceLight,
       filled: true,
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
-        borderSide: const BorderSide(color: dividerLight, width: 1),
+        borderSide: BorderSide(color: dividerLight),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
-        borderSide: const BorderSide(color: dividerLight, width: 1),
+        borderSide: BorderSide(color: dividerLight),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
@@ -205,68 +247,55 @@ class AppTheme {
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
-        borderSide: const BorderSide(color: errorLight, width: 1),
+        borderSide: const BorderSide(color: errorLight),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
         borderSide: const BorderSide(color: errorLight, width: 2),
       ),
-      disabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.0),
-        borderSide: const BorderSide(color: disabledLight, width: 1),
-      ),
-      labelStyle: GoogleFonts.roboto(
-        color: textSecondaryLight,
+      labelStyle: GoogleFonts.inter(
+        color: textMediumEmphasisLight,
         fontSize: 16,
         fontWeight: FontWeight.w400,
       ),
-      hintStyle: GoogleFonts.roboto(
-        color: textDisabledEmphasisLight,
+      hintStyle: GoogleFonts.inter(
+        color: textDisabledLight,
         fontSize: 16,
         fontWeight: FontWeight.w400,
       ),
-      errorStyle: GoogleFonts.roboto(
-        color: errorLight,
-        fontSize: 12,
-        fontWeight: FontWeight.w400,
-      ),
+      prefixIconColor: textMediumEmphasisLight,
+      suffixIconColor: textMediumEmphasisLight,
     ),
 
-    // Switch theme - South African colors for states
+    // Switch theme
     switchTheme: SwitchThemeData(
       thumbColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.selected)) {
           return primaryLight;
         }
-        if (states.contains(WidgetState.disabled)) {
-          return disabledLight;
-        }
-        return textSecondaryLight;
+        return textMediumEmphasisLight;
       }),
       trackColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.selected)) {
           return primaryLight.withValues(alpha: 0.5);
         }
-        if (states.contains(WidgetState.disabled)) {
-          return disabledLight.withValues(alpha: 0.3);
-        }
-        return textSecondaryLight.withValues(alpha: 0.3);
+        return textDisabledLight;
       }),
     ),
 
-    // Checkbox theme - Success green for selected
+    // Checkbox theme
     checkboxTheme: CheckboxThemeData(
       fillColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.selected)) {
-          return secondaryLight;
+          return primaryLight;
         }
-        if (states.contains(WidgetState.disabled)) {
-          return disabledLight;
-        }
-        return null;
+        return Colors.transparent;
       }),
-      checkColor: WidgetStateProperty.all(surfaceLight),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+      checkColor: WidgetStateProperty.all(onPrimaryLight),
+      side: BorderSide(color: dividerLight, width: 2),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4),
+      ),
     ),
 
     // Radio theme
@@ -275,49 +304,40 @@ class AppTheme {
         if (states.contains(WidgetState.selected)) {
           return primaryLight;
         }
-        if (states.contains(WidgetState.disabled)) {
-          return disabledLight;
-        }
-        return textSecondaryLight;
+        return textMediumEmphasisLight;
       }),
     ),
 
-    // Progress indicators
+    // Progress indicator
     progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: primaryLight,
       linearTrackColor: dividerLight,
-      circularTrackColor: dividerLight,
     ),
 
     // Slider theme
     sliderTheme: SliderThemeData(
       activeTrackColor: primaryLight,
-      inactiveTrackColor: dividerLight,
       thumbColor: primaryLight,
       overlayColor: primaryLight.withValues(alpha: 0.2),
-      valueIndicatorColor: primaryLight,
-      valueIndicatorTextStyle: GoogleFonts.roboto(
-        color: surfaceLight,
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-      ),
+      inactiveTrackColor: dividerLight,
+      trackHeight: 4.0,
     ),
 
-    // Tab bar theme
+    // Tab bar theme - category switching
     tabBarTheme: TabBarThemeData(
       labelColor: primaryLight,
-      unselectedLabelColor: textSecondaryLight,
+      unselectedLabelColor: textMediumEmphasisLight,
       indicatorColor: primaryLight,
-      indicatorSize: TabBarIndicatorSize.tab,
-      labelStyle: GoogleFonts.roboto(
+      indicatorSize: TabBarIndicatorSize.label,
+      labelStyle: GoogleFonts.inter(
         fontSize: 14,
         fontWeight: FontWeight.w500,
-        letterSpacing: 1.25,
+        letterSpacing: 0.1,
       ),
-      unselectedLabelStyle: GoogleFonts.roboto(
+      unselectedLabelStyle: GoogleFonts.inter(
         fontSize: 14,
         fontWeight: FontWeight.w400,
-        letterSpacing: 1.25,
+        letterSpacing: 0.1,
       ),
     ),
 
@@ -327,210 +347,218 @@ class AppTheme {
         color: textPrimaryLight.withValues(alpha: 0.9),
         borderRadius: BorderRadius.circular(4),
       ),
-      textStyle: GoogleFonts.roboto(
+      textStyle: GoogleFonts.inter(
         color: surfaceLight,
         fontSize: 12,
         fontWeight: FontWeight.w400,
       ),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      waitDuration: const Duration(milliseconds: 500),
     ),
 
     // Snackbar theme
     snackBarTheme: SnackBarThemeData(
       backgroundColor: textPrimaryLight,
-      contentTextStyle: GoogleFonts.roboto(
+      contentTextStyle: GoogleFonts.inter(
         color: surfaceLight,
         fontSize: 14,
         fontWeight: FontWeight.w400,
       ),
-      actionTextColor: accentLight,
+      actionTextColor: accentWarmLight,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-      elevation: 4.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      elevation: 3.0,
+    ),
+
+    // Icon theme
+    iconTheme: const IconThemeData(
+      color: textPrimaryLight,
+      size: 24,
     ),
 
     // Chip theme
     chipTheme: ChipThemeData(
-      backgroundColor: dividerLight,
-      selectedColor: primaryLight.withValues(alpha: 0.12),
-      disabledColor: disabledLight.withValues(alpha: 0.12),
-      labelStyle: GoogleFonts.roboto(
+      backgroundColor: surfaceLight,
+      selectedColor: primaryLight.withValues(alpha: 0.2),
+      disabledColor: dividerLight,
+      labelStyle: GoogleFonts.inter(
         fontSize: 14,
         fontWeight: FontWeight.w400,
         color: textPrimaryLight,
       ),
-      secondaryLabelStyle: GoogleFonts.roboto(
+      secondaryLabelStyle: GoogleFonts.inter(
         fontSize: 14,
         fontWeight: FontWeight.w400,
-        color: surfaceLight,
+        color: textSecondaryLight,
       ),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-    ),
-
-    // Dialog theme
-    dialogTheme: DialogThemeData(
-      backgroundColor: surfaceLight,
-      elevation: 8.0,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
-      titleTextStyle: GoogleFonts.roboto(
-        fontSize: 20,
-        fontWeight: FontWeight.w500,
-        color: textPrimaryLight,
-        letterSpacing: 0.15,
-      ),
-      contentTextStyle: GoogleFonts.roboto(
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
-        color: textPrimaryLight,
-        letterSpacing: 0.5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+        side: BorderSide(color: dividerLight),
       ),
     ),
-
-    // Divider theme
-    dividerTheme: const DividerThemeData(
-      color: dividerLight,
-      thickness: 1,
-      space: 1,
-    ),
+    dialogTheme: DialogThemeData(backgroundColor: dialogLight),
   );
 
-  /// Dark theme - Adapted for night study sessions
+  /// Dark theme - Contemporary Culinary Minimalism (Dark Mode)
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     useMaterial3: true,
     colorScheme: ColorScheme(
       brightness: Brightness.dark,
       primary: primaryDark,
-      onPrimary: textPrimaryDark,
-      primaryContainer: primaryDark.withValues(alpha: 0.24),
-      onPrimaryContainer: primaryDark,
+      onPrimary: onPrimaryDark,
+      primaryContainer: primaryVariantDark,
+      onPrimaryContainer: onPrimaryDark,
       secondary: secondaryDark,
-      onSecondary: textPrimaryDark,
-      secondaryContainer: secondaryDark.withValues(alpha: 0.24),
-      onSecondaryContainer: secondaryDark,
-      tertiary: accentDark,
-      onTertiary: backgroundDark,
-      tertiaryContainer: accentDark.withValues(alpha: 0.24),
-      onTertiaryContainer: accentDark,
+      onSecondary: onSecondaryDark,
+      secondaryContainer: secondaryVariantDark,
+      onSecondaryContainer: onSecondaryDark,
+      tertiary: accentWarmDark,
+      onTertiary: onPrimaryDark,
+      tertiaryContainer: accentWarmDark,
+      onTertiaryContainer: onPrimaryDark,
       error: errorDark,
-      onError: backgroundDark,
+      onError: onErrorDark,
       surface: surfaceDark,
-      onSurface: textPrimaryDark,
+      onSurface: onSurfaceDark,
       onSurfaceVariant: textSecondaryDark,
       outline: dividerDark,
-      outlineVariant: dividerDark.withValues(alpha: 0.5),
+      outlineVariant: dividerDark,
       shadow: shadowDark,
       scrim: shadowDark,
       inverseSurface: surfaceLight,
-      onInverseSurface: textPrimaryLight,
+      onInverseSurface: onSurfaceLight,
       inversePrimary: primaryLight,
-      surfaceTint: primaryDark,
     ),
     scaffoldBackgroundColor: backgroundDark,
-    cardColor: surfaceDark,
+    cardColor: cardDark,
     dividerColor: dividerDark,
-    disabledColor: disabledDark,
+
+    // AppBar theme
     appBarTheme: AppBarTheme(
       backgroundColor: surfaceDark,
       foregroundColor: textPrimaryDark,
-      elevation: 2.0,
-      centerTitle: true,
-      titleTextStyle: GoogleFonts.roboto(
+      elevation: 0,
+      centerTitle: false,
+      titleTextStyle: GoogleFonts.inter(
         fontSize: 20,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w600,
         color: textPrimaryDark,
         letterSpacing: 0.15,
       ),
-      iconTheme: const IconThemeData(color: textPrimaryDark, size: 24),
+      iconTheme: const IconThemeData(
+        color: textPrimaryDark,
+        size: 24,
+      ),
     ),
+
+    // Card theme
     cardTheme: CardThemeData(
-      color: surfaceDark,
+      color: cardDark,
       elevation: 2.0,
       shadowColor: shadowDark,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.0),
+      ),
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
     ),
+
+    // Bottom navigation
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: surfaceDark,
       selectedItemColor: primaryDark,
-      unselectedItemColor: textSecondaryDark,
-      selectedLabelStyle: GoogleFonts.roboto(
+      unselectedItemColor: textMediumEmphasisDark,
+      elevation: 4.0,
+      type: BottomNavigationBarType.fixed,
+      selectedLabelStyle: GoogleFonts.inter(
         fontSize: 12,
         fontWeight: FontWeight.w500,
       ),
-      unselectedLabelStyle: GoogleFonts.roboto(
+      unselectedLabelStyle: GoogleFonts.inter(
         fontSize: 12,
         fontWeight: FontWeight.w400,
       ),
-      type: BottomNavigationBarType.fixed,
-      elevation: 8.0,
     ),
+
+    // Floating action button
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: accentDark,
-      foregroundColor: backgroundDark,
-      elevation: 4.0,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+      backgroundColor: accentWarmDark,
+      foregroundColor: onPrimaryDark,
+      elevation: 3.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16.0),
+      ),
     ),
+
+    // Button themes
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        foregroundColor: textPrimaryDark,
+        foregroundColor: onPrimaryDark,
         backgroundColor: primaryDark,
-        disabledForegroundColor: textDisabledEmphasisDark,
-        disabledBackgroundColor: disabledDark,
         elevation: 2.0,
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        minimumSize: const Size(88, 48),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-        textStyle: GoogleFonts.roboto(
+        minimumSize: const Size(48, 48),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        textStyle: GoogleFonts.inter(
           fontSize: 14,
           fontWeight: FontWeight.w500,
           letterSpacing: 1.25,
         ),
       ),
     ),
+
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         foregroundColor: primaryDark,
-        disabledForegroundColor: textDisabledEmphasisDark,
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        minimumSize: const Size(88, 48),
+        minimumSize: const Size(48, 48),
         side: const BorderSide(color: primaryDark, width: 1),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-        textStyle: GoogleFonts.roboto(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        textStyle: GoogleFonts.inter(
           fontSize: 14,
           fontWeight: FontWeight.w500,
           letterSpacing: 1.25,
         ),
       ),
     ),
+
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: primaryDark,
-        disabledForegroundColor: textDisabledEmphasisDark,
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        minimumSize: const Size(88, 48),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-        textStyle: GoogleFonts.roboto(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        minimumSize: const Size(48, 48),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        textStyle: GoogleFonts.inter(
           fontSize: 14,
           fontWeight: FontWeight.w500,
           letterSpacing: 1.25,
         ),
       ),
     ),
+
+    // Typography
     textTheme: _buildTextTheme(isLight: false),
+
+    // Input decoration
     inputDecorationTheme: InputDecorationTheme(
       fillColor: surfaceDark,
       filled: true,
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
-        borderSide: const BorderSide(color: dividerDark, width: 1),
+        borderSide: BorderSide(color: dividerDark),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
-        borderSide: const BorderSide(color: dividerDark, width: 1),
+        borderSide: BorderSide(color: dividerDark),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
@@ -538,299 +566,265 @@ class AppTheme {
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
-        borderSide: const BorderSide(color: errorDark, width: 1),
+        borderSide: const BorderSide(color: errorDark),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(8.0),
         borderSide: const BorderSide(color: errorDark, width: 2),
       ),
-      disabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.0),
-        borderSide: const BorderSide(color: disabledDark, width: 1),
-      ),
-      labelStyle: GoogleFonts.roboto(
-        color: textSecondaryDark,
+      labelStyle: GoogleFonts.inter(
+        color: textMediumEmphasisDark,
         fontSize: 16,
         fontWeight: FontWeight.w400,
       ),
-      hintStyle: GoogleFonts.roboto(
-        color: textDisabledEmphasisDark,
+      hintStyle: GoogleFonts.inter(
+        color: textDisabledDark,
         fontSize: 16,
         fontWeight: FontWeight.w400,
       ),
-      errorStyle: GoogleFonts.roboto(
-        color: errorDark,
-        fontSize: 12,
-        fontWeight: FontWeight.w400,
-      ),
+      prefixIconColor: textMediumEmphasisDark,
+      suffixIconColor: textMediumEmphasisDark,
     ),
+
+    // Switch theme
     switchTheme: SwitchThemeData(
       thumbColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.selected)) {
           return primaryDark;
         }
-        if (states.contains(WidgetState.disabled)) {
-          return disabledDark;
-        }
-        return textSecondaryDark;
+        return textMediumEmphasisDark;
       }),
       trackColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.selected)) {
           return primaryDark.withValues(alpha: 0.5);
         }
-        if (states.contains(WidgetState.disabled)) {
-          return disabledDark.withValues(alpha: 0.3);
-        }
-        return textSecondaryDark.withValues(alpha: 0.3);
+        return textDisabledDark;
       }),
     ),
+
+    // Checkbox theme
     checkboxTheme: CheckboxThemeData(
       fillColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.selected)) {
-          return secondaryDark;
+          return primaryDark;
         }
-        if (states.contains(WidgetState.disabled)) {
-          return disabledDark;
-        }
-        return null;
+        return Colors.transparent;
       }),
-      checkColor: WidgetStateProperty.all(backgroundDark),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0)),
+      checkColor: WidgetStateProperty.all(onPrimaryDark),
+      side: BorderSide(color: dividerDark, width: 2),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4),
+      ),
     ),
+
+    // Radio theme
     radioTheme: RadioThemeData(
       fillColor: WidgetStateProperty.resolveWith((states) {
         if (states.contains(WidgetState.selected)) {
           return primaryDark;
         }
-        if (states.contains(WidgetState.disabled)) {
-          return disabledDark;
-        }
-        return textSecondaryDark;
+        return textMediumEmphasisDark;
       }),
     ),
+
+    // Progress indicator
     progressIndicatorTheme: const ProgressIndicatorThemeData(
       color: primaryDark,
       linearTrackColor: dividerDark,
-      circularTrackColor: dividerDark,
     ),
+
+    // Slider theme
     sliderTheme: SliderThemeData(
       activeTrackColor: primaryDark,
-      inactiveTrackColor: dividerDark,
       thumbColor: primaryDark,
       overlayColor: primaryDark.withValues(alpha: 0.2),
-      valueIndicatorColor: primaryDark,
-      valueIndicatorTextStyle: GoogleFonts.roboto(
-        color: backgroundDark,
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-      ),
+      inactiveTrackColor: dividerDark,
+      trackHeight: 4.0,
     ),
+
+    // Tab bar theme
     tabBarTheme: TabBarThemeData(
       labelColor: primaryDark,
-      unselectedLabelColor: textSecondaryDark,
+      unselectedLabelColor: textMediumEmphasisDark,
       indicatorColor: primaryDark,
-      indicatorSize: TabBarIndicatorSize.tab,
-      labelStyle: GoogleFonts.roboto(
+      indicatorSize: TabBarIndicatorSize.label,
+      labelStyle: GoogleFonts.inter(
         fontSize: 14,
         fontWeight: FontWeight.w500,
-        letterSpacing: 1.25,
+        letterSpacing: 0.1,
       ),
-      unselectedLabelStyle: GoogleFonts.roboto(
+      unselectedLabelStyle: GoogleFonts.inter(
         fontSize: 14,
         fontWeight: FontWeight.w400,
-        letterSpacing: 1.25,
+        letterSpacing: 0.1,
       ),
     ),
+
+    // Tooltip theme
     tooltipTheme: TooltipThemeData(
       decoration: BoxDecoration(
         color: textPrimaryDark.withValues(alpha: 0.9),
         borderRadius: BorderRadius.circular(4),
       ),
-      textStyle: GoogleFonts.roboto(
-        color: backgroundDark,
+      textStyle: GoogleFonts.inter(
+        color: surfaceDark,
         fontSize: 12,
         fontWeight: FontWeight.w400,
       ),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      waitDuration: const Duration(milliseconds: 500),
     ),
+
+    // Snackbar theme
     snackBarTheme: SnackBarThemeData(
       backgroundColor: surfaceDark,
-      contentTextStyle: GoogleFonts.roboto(
+      contentTextStyle: GoogleFonts.inter(
         color: textPrimaryDark,
         fontSize: 14,
         fontWeight: FontWeight.w400,
       ),
-      actionTextColor: accentDark,
+      actionTextColor: accentWarmDark,
       behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-      elevation: 4.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      elevation: 3.0,
     ),
+
+    // Icon theme
+    iconTheme: const IconThemeData(
+      color: textPrimaryDark,
+      size: 24,
+    ),
+
+    // Chip theme
     chipTheme: ChipThemeData(
-      backgroundColor: dividerDark,
-      selectedColor: primaryDark.withValues(alpha: 0.24),
-      disabledColor: disabledDark.withValues(alpha: 0.12),
-      labelStyle: GoogleFonts.roboto(
+      backgroundColor: surfaceDark,
+      selectedColor: primaryDark.withValues(alpha: 0.2),
+      disabledColor: dividerDark,
+      labelStyle: GoogleFonts.inter(
         fontSize: 14,
         fontWeight: FontWeight.w400,
         color: textPrimaryDark,
       ),
-      secondaryLabelStyle: GoogleFonts.roboto(
+      secondaryLabelStyle: GoogleFonts.inter(
         fontSize: 14,
         fontWeight: FontWeight.w400,
-        color: backgroundDark,
+        color: textSecondaryDark,
       ),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
-    ),
-    dialogTheme: DialogThemeData(
-      backgroundColor: surfaceDark,
-      elevation: 8.0,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
-      titleTextStyle: GoogleFonts.roboto(
-        fontSize: 20,
-        fontWeight: FontWeight.w500,
-        color: textPrimaryDark,
-        letterSpacing: 0.15,
-      ),
-      contentTextStyle: GoogleFonts.roboto(
-        fontSize: 16,
-        fontWeight: FontWeight.w400,
-        color: textPrimaryDark,
-        letterSpacing: 0.5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+        side: BorderSide(color: dividerDark),
       ),
     ),
-    dividerTheme: const DividerThemeData(
-      color: dividerDark,
-      thickness: 1,
-      space: 1,
-    ),
+    dialogTheme: DialogThemeData(backgroundColor: dialogDark),
   );
 
   /// Helper method to build text theme based on brightness
-  /// Uses Roboto for optimal educational content readability
+  /// Typography: Inter for headings, body text, and captions with Roboto for data
   static TextTheme _buildTextTheme({required bool isLight}) {
     final Color textHighEmphasis =
         isLight ? textHighEmphasisLight : textHighEmphasisDark;
     final Color textMediumEmphasis =
         isLight ? textMediumEmphasisLight : textMediumEmphasisDark;
-    final Color textDisabled =
-        isLight ? textDisabledEmphasisLight : textDisabledEmphasisDark;
+    final Color textDisabled = isLight ? textDisabledLight : textDisabledDark;
 
     return TextTheme(
-      // Display styles - Large headings
-      displayLarge: GoogleFonts.roboto(
+      // Display styles - Inter for headings
+      displayLarge: GoogleFonts.inter(
         fontSize: 57,
         fontWeight: FontWeight.w400,
         color: textHighEmphasis,
         letterSpacing: -0.25,
-        height: 1.12,
       ),
-      displayMedium: GoogleFonts.roboto(
+      displayMedium: GoogleFonts.inter(
         fontSize: 45,
         fontWeight: FontWeight.w400,
         color: textHighEmphasis,
-        letterSpacing: 0,
-        height: 1.16,
       ),
-      displaySmall: GoogleFonts.roboto(
+      displaySmall: GoogleFonts.inter(
         fontSize: 36,
         fontWeight: FontWeight.w400,
         color: textHighEmphasis,
-        letterSpacing: 0,
-        height: 1.22,
       ),
 
-      // Headline styles - Section headers
-      headlineLarge: GoogleFonts.roboto(
+      // Headline styles - Inter for recipe titles
+      headlineLarge: GoogleFonts.inter(
         fontSize: 32,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w600,
         color: textHighEmphasis,
-        letterSpacing: 0,
-        height: 1.25,
       ),
-      headlineMedium: GoogleFonts.roboto(
+      headlineMedium: GoogleFonts.inter(
         fontSize: 28,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w600,
         color: textHighEmphasis,
-        letterSpacing: 0,
-        height: 1.29,
       ),
-      headlineSmall: GoogleFonts.roboto(
+      headlineSmall: GoogleFonts.inter(
         fontSize: 24,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w600,
         color: textHighEmphasis,
-        letterSpacing: 0,
-        height: 1.33,
       ),
 
-      // Title styles - Card headers and list items
-      titleLarge: GoogleFonts.roboto(
-        fontSize: 22,
-        fontWeight: FontWeight.w500,
+      // Title styles - Inter for section headers
+      titleLarge: GoogleFonts.inter(
+        fontSize: 20,
+        fontWeight: FontWeight.w600,
         color: textHighEmphasis,
-        letterSpacing: 0,
-        height: 1.27,
+        letterSpacing: 0.15,
       ),
-      titleMedium: GoogleFonts.roboto(
+      titleMedium: GoogleFonts.inter(
         fontSize: 16,
         fontWeight: FontWeight.w500,
         color: textHighEmphasis,
         letterSpacing: 0.15,
-        height: 1.50,
       ),
-      titleSmall: GoogleFonts.roboto(
+      titleSmall: GoogleFonts.inter(
         fontSize: 14,
         fontWeight: FontWeight.w500,
         color: textHighEmphasis,
         letterSpacing: 0.1,
-        height: 1.43,
       ),
 
-      // Body styles - Main content text
-      bodyLarge: GoogleFonts.roboto(
+      // Body styles - Inter for recipe instructions and content
+      bodyLarge: GoogleFonts.inter(
         fontSize: 16,
         fontWeight: FontWeight.w400,
         color: textHighEmphasis,
         letterSpacing: 0.5,
-        height: 1.50,
+        height: 1.5,
       ),
-      bodyMedium: GoogleFonts.roboto(
+      bodyMedium: GoogleFonts.inter(
         fontSize: 14,
         fontWeight: FontWeight.w400,
         color: textHighEmphasis,
         letterSpacing: 0.25,
-        height: 1.43,
+        height: 1.5,
       ),
-      bodySmall: GoogleFonts.roboto(
+      bodySmall: GoogleFonts.inter(
         fontSize: 12,
         fontWeight: FontWeight.w400,
         color: textMediumEmphasis,
         letterSpacing: 0.4,
-        height: 1.33,
       ),
 
-      // Label styles - Buttons and small text
+      // Label styles - Roboto for measurements and data
       labelLarge: GoogleFonts.roboto(
         fontSize: 14,
         fontWeight: FontWeight.w500,
         color: textHighEmphasis,
         letterSpacing: 0.1,
-        height: 1.43,
       ),
       labelMedium: GoogleFonts.roboto(
         fontSize: 12,
         fontWeight: FontWeight.w500,
         color: textMediumEmphasis,
         letterSpacing: 0.5,
-        height: 1.33,
       ),
       labelSmall: GoogleFonts.roboto(
         fontSize: 11,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w400,
         color: textDisabled,
         letterSpacing: 0.5,
-        height: 1.45,
       ),
     );
   }
