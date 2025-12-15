@@ -15,11 +15,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Setup Flutter
+      # Setup Flutter (updated to 3.38.5 which includes Dart >=3.6.0)
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0'   # pin to your Flutter SDK version
+          flutter-version: '3.38.5'
+
+      # Cache pub packages for faster builds
+      - name: Cache pub packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('pubspec.lock') }}
 
       # Install dependencies
       - name: Install dependencies
